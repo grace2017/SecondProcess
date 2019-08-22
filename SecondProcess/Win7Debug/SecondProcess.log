@@ -1,0 +1,46 @@
+﻿生成启动时间为 2019/6/8 10:53:50。
+     1>项目“D:\Projects_R0_X32\SecondProcess\SecondProcess\SecondProcess.vcxproj”在节点 2 上(Build 个目标)。
+     1>StampInf:
+         D:\Program Files (x86)\Windows Kits\8.1\bin\x86\stampinf.exe -d "*" -a "x86" -v "*" -k "1.11" -u "1.11.0" -f Win7Debug\SecondProcess.inf 
+         Stamping Win7Debug\SecondProcess.inf [Version] section with DriverVer=06/08/2019,10.53.50.748
+       RunWpp:
+         D:\Program Files (x86)\Windows Kits\8.1\bin\x86\tracewpp.exe -cfgdir:"D:\Program Files (x86)\Windows Kits\8.1\bin\wppconfig\rev1" -scan:"trace.h" -odir:"Win7Debug\\" -km common.cpp debugport.cpp feature_code.cpp hook_dbgfunction.cpp hook_kfunction.cpp IDT.cpp kernelfun_rewrite.cpp kernel_function.cpp kernel_object.cpp main.c PAEAddr.cpp process.cpp SSDT.cpp 
+       ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IWin7Debug\ /Zi /nologo /W4 /WX- /Od /Oi /Oy- /D _X86_=1 /D i386=1 /D STD_CALL /D DEPRECATE_DDK_FUNCTIONS=1 /D MSC_NOOPT /D _WIN32_WINNT=0x0601 /D WINVER=0x0601 /D WINNT=1 /D NTDDI_VERSION=0x06010000 /D DBG=1 /D KMDF_VERSION_MAJOR=1 /D KMDF_VERSION_MINOR=11 /GF /Gm- /Zp8 /GS /Gy /fp:precise /Zc:wchar_t- /Zc:forScope- /GR- /Fo"Win7Debug\\" /Fd"Win7Debug\vc120.pdb" /Gz /wd4748 /wd4603 /wd4627 /wd4986 /wd4987 /wd4996 /FI"D:\Program Files (x86)\Windows Kits\8.1\Include\Shared\warning.h" /analyze- /errorReport:prompt /kernel -cbstring /d1import_no_registry /d2AllowCompatibleILVersions /d2Zi+ main.c
+         main.c
+     1>d:\projects_r0_x32\secondprocess\secondprocess\kernel.h(122): warning C4102: “returnR3”: 未引用的标签
+     1>d:\projects_r0_x32\secondprocess\secondprocess\kernel.h(122): warning C4102: “recoverRegister”: 未引用的标签
+     1>d:\projects_r0_x32\secondprocess\secondprocess\common.h(98): warning C4214: 使用了非标准扩展 : 整形以外的位域类型
+     1>d:\projects_r0_x32\secondprocess\secondprocess\common.h(99): warning C4214: 使用了非标准扩展 : 整形以外的位域类型
+     1>d:\projects_r0_x32\secondprocess\secondprocess\common.h(100): warning C4201: 使用了非标准扩展 : 无名称的结构/联合
+     1>d:\projects_r0_x32\secondprocess\secondprocess\common.h(101): warning C4201: 使用了非标准扩展 : 无名称的结构/联合
+     1>main.c(45): warning C4098: “demo”:“void”函数返回值
+     1>main.c(55): warning C4100: “pDevObj”: 未引用的形参
+     1>main.c(65): warning C4100: “pDevObj”: 未引用的形参
+     1>main.c(75): warning C4100: “pDevObj”: 未引用的形参
+     1>d:\projects_r0_x32\secondprocess\secondprocess\kernel.h(78): warning C4733: 内联 asm 分配到“FS:0”: 处理程序未注册为安全处理程序
+       Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Projects_R0_X32\SecondProcess\Win7Debug\SecondProcess.sys" /VERSION:"6.3" /INCREMENTAL:NO /NOLOGO /WX:NO /SECTION:"INIT,d" "D:\Program Files (x86)\Windows Kits\8.1\lib\win7\KM\x86\memcmp.lib" "D:\Program Files (x86)\Windows Kits\8.1\lib\win7\KM\x86\BufferOverflowK.lib" "D:\Program Files (x86)\Windows Kits\8.1\lib\win7\KM\x86\ntoskrnl.lib" "D:\Program Files (x86)\Windows Kits\8.1\lib\win7\KM\x86\hal.lib" "D:\Program Files (x86)\Windows Kits\8.1\lib\win7\KM\x86\wmilib.lib" "D:\Program Files (x86)\Windows Kits\8.1\lib\wdf\kmdf\x86\1.11\WdfLdr.lib" "D:\Program Files (x86)\Windows Kits\8.1\lib\wdf\kmdf\x86\1.11\WdfDriverEntry.lib" /NODEFAULTLIB /MANIFEST:NO /DEBUG /PDB:"D:\Projects_R0_X32\SecondProcess\Win7Debug\SecondProcess.pdb" /SUBSYSTEM:NATIVE,"6.01" /Driver /OPT:REF /OPT:ICF /ENTRY:"FxDriverEntry@8" /RELEASE /IMPLIB:"D:\Projects_R0_X32\SecondProcess\Win7Debug\SecondProcess.lib" /MERGE:"_TEXT=.text;_PAGE=PAGE" /MACHINE:X86 /PROFILE /kernel /IGNORE:4198,4010,4037,4039,4065,4070,4078,4087,4089,4221 /osversion:6.3 /pdbcompress /debugtype:pdata Win7Debug\common.obj
+         Win7Debug\debugport.obj
+         Win7Debug\feature_code.obj
+         Win7Debug\hook_dbgfunction.obj
+         Win7Debug\hook_kfunction.obj
+         Win7Debug\IDT.obj
+         Win7Debug\kernelfun_rewrite.obj
+         Win7Debug\kernel_function.obj
+         Win7Debug\kernel_object.obj
+         Win7Debug\main.obj
+         Win7Debug\PAEAddr.obj
+         Win7Debug\process.obj
+         Win7Debug\SSDT.obj
+         SecondProcess.vcxproj -> D:\Projects_R0_X32\SecondProcess\Win7Debug\SecondProcess.sys
+       DriverTestSign:
+         D:\Program Files (x86)\Windows Kits\8.1\bin\x86\signtool.exe sign /ph /sha1 "E10EEA8FA4E0A81FC9523BDB163E6F1A6CBED4EA" 
+         Done Adding Additional Store
+         Successfully signed: D:\Projects_R0_X32\SecondProcess\Win7Debug\SecondProcess.sys
+         
+     1>已完成生成项目“D:\Projects_R0_X32\SecondProcess\SecondProcess\SecondProcess.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.39

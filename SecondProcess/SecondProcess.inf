@@ -1,0 +1,91 @@
+;
+; SecondProcess.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Sample ; TODO: edit Class
+ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171} ; TODO: edit ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=SecondProcess.cat
+DriverVer= ; TODO: set DriverVer in stampinf property pages
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=SampleClassReg
+
+[SampleClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+SecondProcess.sys  = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NT$ARCH$
+
+[Standard.NT$ARCH$]
+%SecondProcess.DeviceDesc%=SecondProcess_Device, Root\SecondProcess ; TODO: edit hw-id
+
+[SecondProcess_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+SecondProcess.sys
+
+;-------------- Service installation
+[SecondProcess_Device.NT.Services]
+AddService = SecondProcess,%SPSVCINST_ASSOCSERVICE%, SecondProcess_Service_Inst
+
+; -------------- SecondProcess driver install sections
+[SecondProcess_Service_Inst]
+DisplayName    = %SecondProcess.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\SecondProcess.sys
+LoadOrderGroup = Extended Base
+
+;
+;--- SecondProcess_Device Coinstaller installation ------
+;
+
+[DestinationDirs]
+SecondProcess_Device_CoInstaller_CopyFiles = 11
+
+[SecondProcess_Device.NT.CoInstallers]
+AddReg=SecondProcess_Device_CoInstaller_AddReg
+CopyFiles=SecondProcess_Device_CoInstaller_CopyFiles
+
+[SecondProcess_Device_CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll,WdfCoInstaller"
+
+[SecondProcess_Device_CoInstaller_CopyFiles]
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll
+
+[SourceDisksFiles]
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll=1 ; make sure the number matches with SourceDisksNames
+
+[SecondProcess_Device.NT.Wdf]
+KmdfService =  SecondProcess, SecondProcess_wdfsect
+[SecondProcess_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="" ; TODO: add ManufacturerName
+ClassName="Samples" ; TODO: edit ClassName
+DiskName = "SecondProcess Installation Disk"
+SecondProcess.DeviceDesc = "SecondProcess Device"
+SecondProcess.SVCDESC = "SecondProcess Service"
